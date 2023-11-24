@@ -11,7 +11,7 @@ import web.service.UserService;
 public class UserController {
 
 
-    private UserService userService;
+    private final UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -21,7 +21,6 @@ public class UserController {
     public String usr(Model model){
         model.addAttribute("user", userService.listUsers());
         return "user";
-
     }
     @GetMapping("/new")
     public String newPerson(Model model){
