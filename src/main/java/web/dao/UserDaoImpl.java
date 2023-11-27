@@ -10,33 +10,33 @@ import java.util.List;
 @Repository
 public class UserDaoImpl implements UserDao {
     @PersistenceContext
-    private EntityManager em;
+    private EntityManager entityManager;
 
 
     @Override
     public void addUser(User user) {
-        em.persist(user);
+        entityManager.persist(user);
     }
 
     @Override
-    public void updUser(User user) {
-        em.merge(user);
+    public void updateUser(User user) {
+        entityManager.merge(user);
     }
 
     @Override
-    public void delUser(int id) {
-        User user = em.find(User.class, id);
-        em.remove(user);
+    public void deleteUser(int id) {
+        User user = entityManager.find(User.class, id);
+        entityManager.remove(user);
     }
 
     @Override
     public List<User> listUsers() {
-        return em.createQuery("FROM User", User.class).getResultList();
+        return entityManager.createQuery("FROM User", User.class).getResultList();
     }
 
     @Override
     public User findUser(int id) {
-        return em.createQuery("from User u where u.id =: id", User.class)
+        return entityManager.createQuery("from User u where u.id =: id", User.class)
                 .setParameter("id", id).getSingleResult();
     }
 
