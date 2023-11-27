@@ -5,7 +5,7 @@
     <title>Все юзеры</title>
 </head>
 <body>
-ВЕСЬ  СПИСОК
+ВЕСЬ СПИСОК
 <div th:each="us : ${user}">
     <a th:text="${us.getName()}"></a>
     <a th:text="${us.getAge()}"></a>
